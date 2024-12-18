@@ -1,0 +1,332 @@
+1
+00:00:00,005 --> 00:00:03,003
+- [Speaker] Dropdown menus allow users to select one
+
+2
+00:00:03,003 --> 00:00:05,000
+or more options from a list
+
+3
+00:00:05,000 --> 00:00:08,006
+and are typically represented by the select element
+
+4
+00:00:08,006 --> 00:00:13,003
+that contains one or more option elements to choose from.
+
+5
+00:00:13,003 --> 00:00:16,006
+Let's explore how to use Web Driver to interact
+
+6
+00:00:16,006 --> 00:00:18,007
+with select elements.
+
+7
+00:00:18,007 --> 00:00:22,001
+While Web Driver provides generic methods to interact
+
+8
+00:00:22,001 --> 00:00:25,004
+with standalone web elements, dropdown menus consist
+
+9
+00:00:25,004 --> 00:00:28,005
+of both select and option elements.
+
+10
+00:00:28,005 --> 00:00:32,002
+This unique component requires specialized handling,
+
+11
+00:00:32,002 --> 00:00:36,000
+and fortunately, we can use Selenium's select class,
+
+12
+00:00:36,000 --> 00:00:38,008
+which provides methods specifically for interacting
+
+13
+00:00:38,008 --> 00:00:40,007
+with dropdown menus.
+
+14
+00:00:40,007 --> 00:00:43,006
+We'd find the select element, just as we would
+
+15
+00:00:43,006 --> 00:00:52,007
+with any other element, so let's say driver.findeEement,
+
+16
+00:00:52,007 --> 00:00:56,003
+and we can say By.name,
+
+17
+00:00:56,003 --> 00:01:00,008
+and the name of that dropdown is my-select,
+
+18
+00:01:00,008 --> 00:01:05,003
+but then we substantiate a select object with this element.
+
+19
+00:01:05,003 --> 00:01:10,006
+So let's use our select class and we'll call this dropdown
+
+20
+00:01:10,006 --> 00:01:13,000
+and we'll say, this equals a new,
+
+21
+00:01:13,000 --> 00:01:15,001
+and we'll call the select constructor
+
+22
+00:01:15,001 --> 00:01:20,001
+and pass in this driver.findElement.
+
+23
+00:01:20,001 --> 00:01:21,009
+Select provides multiple ways
+
+24
+00:01:21,009 --> 00:01:24,005
+to select an option from the dropdown menu.
+
+25
+00:01:24,005 --> 00:01:28,001
+The best approach is to select the option by its value
+
+26
+00:01:28,001 --> 00:01:30,003
+because the value is less likely to change
+
+27
+00:01:30,003 --> 00:01:32,007
+compared to other approaches.
+
+28
+00:01:32,007 --> 00:01:34,008
+To do so, we'd say
+
+29
+00:01:34,008 --> 00:01:41,000
+dropdown.select by value,
+
+30
+00:01:41,000 --> 00:01:45,003
+and we can put in the value as two,
+
+31
+00:01:45,003 --> 00:01:50,002
+which will select this option from the dropdown menu.
+
+32
+00:01:50,002 --> 00:01:52,003
+Another approach is to select the option
+
+33
+00:01:52,003 --> 00:01:54,007
+by what's displayed on the webpage.
+
+34
+00:01:54,007 --> 00:01:57,009
+Let's select the option that says three,
+
+35
+00:01:57,009 --> 00:02:01,007
+which we see here in the dropdown menu.
+
+36
+00:02:01,007 --> 00:02:07,002
+We'll say dropdown.selectByVisibleText,
+
+37
+00:02:07,002 --> 00:02:12,003
+and we can put in the text there, which was three.
+
+38
+00:02:12,003 --> 00:02:15,004
+Selecting by index is another alternative,
+
+39
+00:02:15,004 --> 00:02:16,007
+though it's less reliable
+
+40
+00:02:16,007 --> 00:02:19,004
+because the index may change if the order
+
+41
+00:02:19,004 --> 00:02:21,005
+of options is modified.
+
+42
+00:02:21,005 --> 00:02:24,000
+I typically use this approach when I don't necessarily care
+
+43
+00:02:24,000 --> 00:02:25,008
+what I'm selecting,
+
+44
+00:02:25,008 --> 00:02:28,008
+but I just want to select the first option for example.
+
+45
+00:02:28,008 --> 00:02:31,003
+The index starts at zero,
+
+46
+00:02:31,003 --> 00:02:35,001
+which is the label element, so let's choose index one
+
+47
+00:02:35,001 --> 00:02:37,003
+to select the first real option.
+
+48
+00:02:37,003 --> 00:02:42,001
+To do so, we say dropdown.selectByIndex
+
+49
+00:02:42,001 --> 00:02:45,002
+and enter the index.
+
+50
+00:02:45,002 --> 00:02:47,006
+The select class also provides a couple of methods
+
+51
+00:02:47,006 --> 00:02:51,003
+to retrieve the selected options from a dropdown.
+
+52
+00:02:51,003 --> 00:02:53,008
+To get the first option that's selected,
+
+53
+00:02:53,008 --> 00:02:56,000
+we can say webElement,
+
+54
+00:02:56,000 --> 00:03:00,006
+and let's call this one selectedOption
+
+55
+00:03:00,006 --> 00:03:06,007
+and we'll say dropdown.getFirstSelectedOption.
+
+56
+00:03:06,007 --> 00:03:08,004
+And if we wanted to get all
+
+57
+00:03:08,004 --> 00:03:12,002
+of the selected options from a multi-select dropdown,
+
+58
+00:03:12,002 --> 00:03:18,006
+we could do List of WebElements.
+
+59
+00:03:18,006 --> 00:03:23,008
+We'll call this one selectedOptions,
+
+60
+00:03:23,008 --> 00:03:29,005
+and we can say dropdown.getAllSelectedOptions.
+
+61
+00:03:29,005 --> 00:03:31,006
+For multi-select dropdowns.
+
+62
+00:03:31,006 --> 00:03:34,009
+The select class provides similar methods to allow you
+
+63
+00:03:34,009 --> 00:03:37,001
+to deselect options.
+
+64
+00:03:37,001 --> 00:03:48,003
+We can deselect by value by saying dropdown.deselectByValue,
+
+65
+00:03:48,003 --> 00:03:53,008
+and enter the value there, two for example,
+
+66
+00:03:53,008 --> 00:03:55,002
+we can also deselect
+
+67
+00:03:55,002 --> 00:04:02,003
+by visible text by saying dropdown.deselectByVisibleText
+
+68
+00:04:02,003 --> 00:04:08,008
+and entering the text from the dropdown to one, for example.
+
+69
+00:04:08,008 --> 00:04:12,005
+And we can also deselect by index,
+
+70
+00:04:12,005 --> 00:04:16,007
+dropdown.deselectByIndex
+
+71
+00:04:16,007 --> 00:04:20,004
+and enter the index of the option to deselect,
+
+72
+00:04:20,004 --> 00:04:22,009
+one for example, note
+
+73
+00:04:22,009 --> 00:04:24,008
+that these methods will throw an exception
+
+74
+00:04:24,008 --> 00:04:27,006
+if used on a single select dropdown
+
+75
+00:04:27,006 --> 00:04:31,001
+because the deselect functionality is not possible
+
+76
+00:04:31,001 --> 00:04:33,007
+for that type of dropdown.
+
+77
+00:04:33,007 --> 00:04:38,002
+Instead, you can select an option that represents the empty
+
+78
+00:04:38,002 --> 00:04:39,008
+or default value.
+
+79
+00:04:39,008 --> 00:04:42,008
+In this case, it would be open this select menu.
+
+80
+00:04:42,008 --> 00:04:45,009
+This is often the first option in the dropdown,
+
+81
+00:04:45,009 --> 00:04:48,009
+typically used as a prompt or a placeholder.
+
+82
+00:04:48,009 --> 00:04:50,002
+By selecting this option,
+
+83
+00:04:50,002 --> 00:04:56,000
+you effectively deselect any previously selected options.
+

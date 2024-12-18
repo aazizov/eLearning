@@ -1,0 +1,136 @@
+1
+00:00:00,005 --> 00:00:02,008
+- [Instructor] Let's explore how to use WebDriver
+
+2
+00:00:02,008 --> 00:00:06,007
+to click web elements such as buttons and links.
+
+3
+00:00:06,007 --> 00:00:09,006
+This button doesn't have an ID,
+
+4
+00:00:09,006 --> 00:00:12,001
+but we can use an XPath query
+
+5
+00:00:12,001 --> 00:00:17,000
+composed of the element's type and inner text.
+
+6
+00:00:17,000 --> 00:00:22,002
+To find the element, we'll say: driver.findElement,
+
+7
+00:00:22,002 --> 00:00:26,009
+and then we'll say By.xpath.
+
+8
+00:00:26,009 --> 00:00:31,002
+In the XPath, we'll use two forward slashes
+
+9
+00:00:31,002 --> 00:00:33,003
+to start from the root.
+
+10
+00:00:33,003 --> 00:00:36,004
+We'll specify the element's type as button,
+
+11
+00:00:36,004 --> 00:00:40,001
+and we'll say call the text() function on that,
+
+12
+00:00:40,001 --> 00:00:42,009
+and make sure that it returns "Submit".
+
+13
+00:00:42,009 --> 00:00:48,002
+Then from here we can say .click().
+
+14
+00:00:48,002 --> 00:00:52,000
+We can use this same technique to click this link.
+
+15
+00:00:52,000 --> 00:00:55,009
+The extra spacing here could prove problematic,
+
+16
+00:00:55,009 --> 00:01:00,009
+but we can take care of that within an XPath selector.
+
+17
+00:01:00,009 --> 00:01:09,003
+So we'll say driver.findElement By.xpath,
+
+18
+00:01:09,003 --> 00:01:11,005
+and we'll start with the a element,
+
+19
+00:01:11,005 --> 00:01:17,008
+and we'll call a function named normalize-space,
+
+20
+00:01:17,008 --> 00:01:20,005
+and we'll call text() inside of that,
+
+21
+00:01:20,005 --> 00:01:24,002
+and then we'll set this equal to the text of the link,
+
+22
+00:01:24,002 --> 00:01:28,009
+which was "Return to index".
+
+23
+00:01:28,009 --> 00:01:33,002
+From here, we can call .click(),
+
+24
+00:01:33,002 --> 00:01:35,004
+and that will click the link.
+
+25
+00:01:35,004 --> 00:01:37,000
+In addition to buttons and links,
+
+26
+00:01:37,000 --> 00:01:39,009
+there are other types of elements that must be clicked
+
+27
+00:01:39,009 --> 00:01:41,008
+in order to interact with them.
+
+28
+00:01:41,008 --> 00:01:44,009
+For example, to choose a color from this color picker,
+
+29
+00:01:44,009 --> 00:01:48,001
+we'd need to first click the element,
+
+30
+00:01:48,001 --> 00:01:51,007
+same for the date picker,
+
+31
+00:01:51,007 --> 00:01:56,000
+and same for these radio buttons as well.
+
+32
+00:01:56,000 --> 00:01:58,009
+Fortunately, the strategy does not change.
+
+33
+00:01:58,009 --> 00:02:02,009
+Locate the element with the best locator strategy available,
+
+34
+00:02:02,009 --> 00:02:08,000
+then use that web element to call the click() method.
+
